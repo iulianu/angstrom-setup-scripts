@@ -327,7 +327,8 @@ _EOF
 # Where to store sources
 DL_DIR = "${OE_SOURCE_DIR}/downloads"
 
-INHERIT += "rm_work"
+# Do not remove the work dir contents. This aids debugging.
+#INHERIT += "rm_work"
 
 # Which files do we want to parse:
 BBFILES ?= "${OE_SOURCE_DIR}/openembedded/recipes/*/*.bb"
@@ -337,13 +338,16 @@ BBMASK = ""
 ENABLE_BINARY_LOCALE_GENERATION = "0"
 
 # What kind of images do we want?
-IMAGE_FSTYPES += "tar.bz2"
+#IMAGE_FSTYPES += "tar.bz2"
+# http://osdir.com/ml/beagleboard/2011-09/msg00118.html
+IMAGE_FSTYPES += "ubi"
+EXTRA_IMAGECMD_ubi = "-m 2KiB -e 126KiB -c 989"
 
 # Make use of SMP:
 #   PARALLEL_MAKE specifies how many concurrent compiler threads are spawned per bitbake process
 #   BB_NUMBER_THREADS specifies how many concurrent bitbake tasks will be run
 #PARALLEL_MAKE     = "-j2"
-BB_NUMBER_THREADS = "2"
+BB_NUMBER_THREADS = "3"
 
 DISTRO   = "${DISTRO}"
 MACHINE ?= "${MACHINE}"
@@ -356,6 +360,9 @@ BB_GENERATE_MIRROR_TARBALLS = "0"
 
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
+
+# Perl build fails under OE, so let's just use the native version.
+ASSUME_PROVIDED += "perl-native openssl-native"
 
 _EOF
 fi
