@@ -60,7 +60,7 @@ else
     #--------------------------------------------------------------------------
     # Specify distribution information
     #--------------------------------------------------------------------------
-    DISTRO="angstrom-2008.1"
+    DISTRO="angstrom-2010.x"
     DISTRO_DIRNAME=`echo $DISTRO | sed s#[.-]#_#g`
 
     echo "export DISTRO=\"${DISTRO}\"" > ~/.oe/environment-2008
@@ -317,6 +317,7 @@ BBFILES ?= ""
 # Make sure to have a conf/layers.conf in there
 BBLAYERS = " \\
   ${OE_SOURCE_DIR}/openembedded \\
+  ${OE_BASE}/../podifi-layer \\
   "
 _EOF
     fi
