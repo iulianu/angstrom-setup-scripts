@@ -433,8 +433,8 @@ then
     if [ $1 = "bitbake" ]
     then
         shift
-        oe_build $*
-        exit 0
+        ret= oe_build $*
+        exit $ret
     fi
 
     if [ $1 = "config" ]
