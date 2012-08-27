@@ -60,7 +60,7 @@ else
     #--------------------------------------------------------------------------
     # Specify distribution information
     #--------------------------------------------------------------------------
-    DISTRO="angstrom-2010.x"
+    DISTRO="PodOS"
     DISTRO_DIRNAME=`echo $DISTRO | sed s#[.-]#_#g`
 
     echo "export DISTRO=\"${DISTRO}\"" > ~/.oe/environment-2008
