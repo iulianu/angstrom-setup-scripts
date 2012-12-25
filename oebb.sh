@@ -362,8 +362,7 @@ BB_GENERATE_MIRROR_TARBALLS = "0"
 # Go through the Firewall
 #HTTP_PROXY        = "http://${PROXYHOST}:${PROXYPORT}/"
 
-# Perl build fails under OE, so let's just use the native version.
-ASSUME_PROVIDED += "perl-native libxml-parser-perl-native openssl-native sgmlspl-native"
+ASSUME_PROVIDED += "libxml-parser-perl-native openssl-native sgmlspl-native"
 
 _EOF
 fi
